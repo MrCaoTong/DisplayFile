@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/resource_library_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="430dp"
+        android:layout_height="540dp"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <com.tmall.ultraviewpager.UltraHorizontalTabLayout
+            android:id="@+id/resource_top_layout"
+            android:layout_width="290dp"
+            android:layout_height="33dp"
+            android:background="@mipmap/resource_title_bg"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
+            app:tl_indicator_color="@color/transparent"
+            app:tl_indicator_margin_left="2dp"
+            app:tl_indicator_margin_right="2dp"
+            app:tl_textSelectColor="@color/subject_indicator"
+            app:tl_textUnselectColor="@color/resource_path" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@mipmap/resource_content_bg"
+            android:orientation="horizontal">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/resource_list_recycler"
+                android:layout_width="33dp"
+                android:layout_height="@dimen/source_library_height"
+                android:layout_marginLeft="30dp" />
+
+            <View
+                android:layout_width="0.5dp"
+                android:layout_height="450dp"
+                android:layout_marginTop="5dp"
+                android:background="@color/resource_line" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <!--路径显示和搜索框-->
+                <FrameLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <LinearLayout
+                        android:id="@+id/resource_path_layout"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:orientation="horizontal">
+
+                        <ImageButton
+                            android:id="@+id/resource_back_ibt"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@color/transparent"
+                            android:src="@mipmap/ic_resource_back" />
+
+                        <HorizontalScrollView
+                            android:layout_width="240dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="5dp"
+                            android:paddingRight="3dp"
+                            android:scrollbars="none">
+
+                            <TextView
+                                android:id="@+id/resource_path_text"
+                                android:layout_width="240dp"
+                                android:layout_height="wrap_content"
+                                android:gravity="center_vertical"
+                                android:textColor="@color/resource_path"
+                                android:textSize="12sp"
+                                android:visibility="visible" />
+                        </HorizontalScrollView>
+                    </LinearLayout>
+
+                    <RelativeLayout
+                        android:layout_width="330dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:paddingRight="15dp">
+
+                        <EditText
+                            android:id="@+id/resource_search_edit"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginRight="5dp"
+                            android:background="@mipmap/ic_resource_edit_bg"
+                            android:hint="@string/search"
+                            android:maxLines="1"
+                            android:paddingLeft="2dp"
+                            android:textColor="@color/resource_search"
+                            android:textColorHint="@color/resource_search"
+                            android:textSize="8sp"
+                            android:visibility="gone" />
+
+                        <RadioButton
+                            android:id="@+id/resource_search_btn"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:layout_marginRight="10dp"
+                            android:background="@mipmap/ic_search_bg"
+                            android:button="@null"
+                            android:drawableRight="@mipmap/ic_resource_search"
+                            android:paddingLeft="3dp"
+                            android:paddingRight="3dp"
+                            android:text="@string/search"
+                            android:textColor="@color/resource_search"
+                            android:textSize="8sp" />
+                    </RelativeLayout>
+                </FrameLayout>
+
+                <!--刷新和数据显示-->
+                <FrameLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp">
+
+                    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+                        android:id="@+id/resource_swipe_refresh"
+                        android:layout_width="320dp"
+                        android:layout_height="430dp">
+
+                        <com.tmall.ultraviewpager.UltraViewPager
+                            android:id="@+id/resource_viewpager"
+                            android:layout_width="320dp"
+                            android:layout_height="430dp" />
+                    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+                    <TextView
+                        android:id="@+id/resource_toast_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:textSize="20sp"
+                        android:visibility="gone" />
+
+                    <ImageButton
+                        android:id="@+id/resource_select_path"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_gravity="right|bottom"
+                        android:layout_marginRight="12dp"
+                        android:background="@color/white"
+                        android:visibility="gone"
+                        android:src="@mipmap/ic_resource_select_path" />
+                </FrameLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

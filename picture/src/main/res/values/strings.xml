@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Launcher</string>
+    <string name="source_library">资源库</string>
+    <string name="source_directory">目录文件</string>
+    <string name="source_picture">图片</string>
+    <string name="source_video">音视频</string>
+    <string name="my_resource">我的资源</string>
+    <string name="source_storage">内部存储设备</string>
+    <string name="source_extstorage">外置存储设备</string>
+    <string name="source_rootdirectory">根目录</string>
+    <string name="search">搜索</string>
+    <string name="no_file">没有文件</string>
+</resources>

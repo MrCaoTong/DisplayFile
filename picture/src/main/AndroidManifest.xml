@@ -1,0 +1,11 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.rugehub.meeting.picture" >
+
+    <application>
+        <!--资源库-->
+        <activity
+            android:name="com.rugehub.meeting.picture.activity.ResourceLibraryActivity"
+            android:launchMode="singleInstance"
+            android:theme="@style/BrowserWindowStyle" />
+    </application>
+</manifest>

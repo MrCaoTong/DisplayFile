@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/resource_adapter_layout"
+    android:layout_width="87dp"
+    android:layout_height="95dp"
+    android:layout_marginTop="5dp"
+    android:background="@mipmap/resource_icon_bg">
+
+    <ImageView
+        android:id="@+id/resource_icon_imageView"
+        android:layout_width="87dp"
+        android:layout_height="68dp"
+        android:background="@color/transparent"
+        android:padding="2dp"
+        android:scaleType="centerCrop"
+        android:visibility="gone" />
+
+    <ImageView
+        android:id="@+id/resource_adapter_imageView"
+        android:layout_width="55dp"
+        android:layout_height="55dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:background="@color/transparent"
+        android:visibility="visible" />
+
+    <ImageView
+        android:id="@+id/check_icon_grid"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:src="@mipmap/ic_grid_selection_check"
+        android:visibility="gone"
+        android:layout_centerInParent="true"/>
+
+    <LinearLayout
+        android:layout_width="87dp"
+        android:layout_height="27dp"
+        android:layout_alignParentBottom="true"
+        android:background="@mipmap/resource_icon_top_bg"
+        android:gravity="center_vertical"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/resource_adapter_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:singleLine="true"
+            android:textColor="@color/resource_path"
+            android:ellipsize="marquee"
+            android:marqueeRepeatLimit="marquee_forever"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:textSize="9sp" />
+
+        <TextView
+            android:id="@+id/resource_adapter_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="1dp"
+            android:textColor="@color/resource_path"
+            android:textSize="8sp" />
+    </LinearLayout>
+</RelativeLayout>
