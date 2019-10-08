@@ -1,4 +1,4 @@
-package com.rugehub.meeting.picture.file;
+package com.filemanager.picture.file;
 
 import com.google.common.collect.Sets;
 

@@ -1,4 +1,4 @@
-package com.rugehub.meeting.picture.util;
+package com.filemanager.picture.util;
 
 import android.content.Context;
 import android.content.Intent;

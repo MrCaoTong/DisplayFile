@@ -1,4 +1,4 @@
-package com.rugehub.meeting.picture.adapter;
+package com.filemanager.picture.adapter;
 
 import android.content.Context;
 import android.content.Intent;
@@ -15,12 +15,12 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.PagerAdapter;
 
+import com.filemanager.picture.R;
+import com.filemanager.picture.activity.ResourceLibraryActivity;
+import com.filemanager.picture.file.FileUtils;
+import com.filemanager.picture.interfaces.OnItemClickListener;
+import com.filemanager.picture.model.FileMode;
 import com.google.common.collect.Sets;
-import com.rugehub.meeting.picture.R;
-import com.rugehub.meeting.picture.activity.ResourceLibraryActivity;
-import com.rugehub.meeting.picture.file.FileUtils;
-import com.rugehub.meeting.picture.interfaces.OnItemClickListener;
-import com.rugehub.meeting.picture.model.FileMode;
 
 import java.io.File;
 import java.util.ArrayList;

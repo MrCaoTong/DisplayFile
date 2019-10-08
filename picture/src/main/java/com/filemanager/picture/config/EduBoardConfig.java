@@ -1,4 +1,4 @@
-package com.rugehub.meeting.picture.config;
+package com.filemanager.picture.config;
 
 import android.os.Environment;
 

@@ -1,4 +1,4 @@
-package com.rugehub.meeting.picture.activity;
+package com.filemanager.picture.activity;
 
 import android.animation.IntEvaluator;
 import android.animation.ValueAnimator;
@@ -35,14 +35,14 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import androidx.viewpager.widget.ViewPager;
 
-import com.rugehub.meeting.picture.R;
-import com.rugehub.meeting.picture.adapter.ResourceDeviceAdapter;
-import com.rugehub.meeting.picture.adapter.ResourceViewPagerAdapter;
-import com.rugehub.meeting.picture.file.FileDataManager;
-import com.rugehub.meeting.picture.file.FileUtils;
-import com.rugehub.meeting.picture.file.ResourceHistory;
-import com.rugehub.meeting.picture.model.FileMode;
-import com.rugehub.meeting.picture.util.ScreenUtil;
+import com.filemanager.picture.R;
+import com.filemanager.picture.adapter.ResourceDeviceAdapter;
+import com.filemanager.picture.adapter.ResourceViewPagerAdapter;
+import com.filemanager.picture.file.FileDataManager;
+import com.filemanager.picture.file.FileUtils;
+import com.filemanager.picture.file.ResourceHistory;
+import com.filemanager.picture.model.FileMode;
+import com.filemanager.picture.util.ScreenUtil;
 import com.tmall.ultraviewpager.UltraVerticalTabLayout;
 import com.tmall.ultraviewpager.UltraViewPager;
 import com.tmall.ultraviewpager.tablayout.SlidingTabLayout;
@@ -55,8 +55,8 @@ import java.util.Map;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-import static com.rugehub.meeting.picture.file.FileUtils.getVolumePaths;
-import static com.rugehub.meeting.picture.file.FileUtils.isQualified;
+import static com.filemanager.picture.file.FileUtils.getVolumePaths;
+import static com.filemanager.picture.file.FileUtils.isQualified;
 
 /**
  * 资源库

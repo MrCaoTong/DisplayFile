@@ -1,4 +1,4 @@
-package com.rugehub.meeting.picture.adapter;
+package com.filemanager.picture.adapter;
 
 import android.view.View;
 import android.widget.ImageView;
@@ -7,7 +7,8 @@ import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.rugehub.meeting.picture.R;
+import com.filemanager.picture.R;
+
 
 public class ViewHolder extends RecyclerView.ViewHolder {
 

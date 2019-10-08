@@ -1,4 +1,4 @@
-package com.rugehub.meeting.picture.adapter;
+package com.filemanager.picture.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -7,11 +7,12 @@ import android.view.ViewGroup;
 
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.rugehub.meeting.picture.GlideApp;
-import com.rugehub.meeting.picture.R;
-import com.rugehub.meeting.picture.file.FileUtils;
-import com.rugehub.meeting.picture.interfaces.OnItemClickListener;
-import com.rugehub.meeting.picture.model.FileMode;
+import com.filemanager.picture.GlideApp;
+import com.filemanager.picture.R;
+import com.filemanager.picture.adapter.ViewHolder;
+import com.filemanager.picture.file.FileUtils;
+import com.filemanager.picture.interfaces.OnItemClickListener;
+import com.filemanager.picture.model.FileMode;
 
 import java.io.File;
 import java.text.SimpleDateFormat;

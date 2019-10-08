@@ -1,4 +1,4 @@
-package com.rugehub.meeting.picture.model;
+package com.filemanager.picture.model;
 
 /**
  * 处理文件的类型

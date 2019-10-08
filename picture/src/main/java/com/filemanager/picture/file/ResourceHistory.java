@@ -1,4 +1,4 @@
-package com.rugehub.meeting.picture.file;
+package com.filemanager.picture.file;
 
 /**
  * 历史纪录

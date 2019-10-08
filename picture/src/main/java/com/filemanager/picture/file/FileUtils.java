@@ -1,12 +1,13 @@
-package com.rugehub.meeting.picture.file;
+package com.filemanager.picture.file;
 
 import android.content.Context;
 import android.os.storage.StorageManager;
 import android.text.TextUtils;
 import android.webkit.MimeTypeMap;
 
-import com.rugehub.meeting.picture.config.EduBoardConfig;
-import com.rugehub.meeting.picture.model.FileMode;
+
+import com.filemanager.picture.config.EduBoardConfig;
+import com.filemanager.picture.model.FileMode;
 
 import java.io.File;
 import java.io.FileFilter;
