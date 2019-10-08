@@ -1,0 +1,2 @@
+include ':app', ':picture', ':ultraviewpager'
+rootProject.name='ResourceFileManager'
