@@ -21,3 +21,5 @@ type有：
 * wps  显示pdf,excel,word,ppt类型的文件
 
 如需增加类型，可自行扩展
+![image](https://github.com/MrCaoTong/DisplayFile/blob/master/img/wps.png)
+
