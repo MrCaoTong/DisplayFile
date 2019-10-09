@@ -2,11 +2,12 @@ package com.filemanager;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Toast;
 
-import com.filemanager.picture.activity.ResourceLibraryActivity;
+import com.filemanager.picture.bean.FileRelay;
+import com.filemanager.picture.interfaces.OnFilePathListener;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -17,7 +18,12 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.test).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(MainActivity.this, ResourceLibraryActivity.class));
+                FileRelay.startActivtiy(MainActivity.this, "wps", new OnFilePathListener() {
+                    @Override
+                    public void onFilePath(String path) {
+                        Toast.makeText(MainActivity.this,path,Toast.LENGTH_SHORT).show();
+                    }
+                });
             }
         });
     }

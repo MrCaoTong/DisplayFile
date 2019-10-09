@@ -38,6 +38,7 @@ import androidx.viewpager.widget.ViewPager;
 import com.filemanager.picture.R;
 import com.filemanager.picture.adapter.ResourceDeviceAdapter;
 import com.filemanager.picture.adapter.ResourceViewPagerAdapter;
+import com.filemanager.picture.config.StatusConfig;
 import com.filemanager.picture.file.FileDataManager;
 import com.filemanager.picture.file.FileUtils;
 import com.filemanager.picture.file.ResourceHistory;
@@ -91,7 +92,6 @@ public class ResourceLibraryActivity extends AppCompatActivity {
     private int resource_type = 0;//当前显示的类别
     private String currentPaths;//当前目录路径
     private String currentDevicePath;//当前设备路径
-    //    private String myResourcePath;//我的资源路径
     private boolean isFileNull = false;//文件是否为空
     private boolean isSearch = false;//搜索是否开启
     private int viewDisplayHeight = 0;//当前资源库可见高度
@@ -118,40 +118,6 @@ public class ResourceLibraryActivity extends AppCompatActivity {
             }
         }
     };
-
-    /**
-     * 返回选择的文件现对应的广播的 Action
-     */
-    public static final String RESOURCE_FILE_PATH_ACTION = "RESOURCE_FILE_PATH";
-    /**
-     * 插入文件对应的广播 Action
-     */
-    public static final String RESOURCE_INSERT_FILE_ACTION = "RESOURCE_INSERT_FILE";
-    /**
-     * 图片文件夹的ACTION
-     */
-    public static final String RESOURCE_PICTURE_FOLDER_ACTION = "resource_picture_folder";
-    /**
-     * 文件路径的 KEY
-     */
-    public static final String RESOURCE_FILE_PATH_KEY = "resource_file_path";
-    /**
-     * 文件夹路径的KEY
-     */
-    public static final String RESOURCE_FOLDER_PATH_KEY = "resource_folder_path";
-
-    public static final String RESOURCE_INSERT_FILE_KEY = "resource_insert_file";
-    /**
-     * 打开资源管理器并且注册文件返回广播接收器
-     */
-    public static void OpenResourceLibrary(Context context, int resource_type) {
-        OpenResourceLibrary((Activity)context, resource_type);
-    }
-    public static void OpenResourceLibrary(Activity activity, int resource_type) {
-        Intent intent = new Intent(activity, ResourceLibraryActivity.class);
-        intent.putExtra("resource_type", resource_type);
-        activity.startActivity(intent);
-    }
 
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR2)
     @Override
@@ -181,25 +147,6 @@ public class ResourceLibraryActivity extends AppCompatActivity {
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         listRecyclerView.setLayoutManager(layoutManager);
 
-        //创建我的资源
-//        myResourcePath = Environment.getExternalStorageDirectory().getAbsolutePath() + "/Education";
-//        File fileEdu = new File(myResourcePath);
-//        if (!fileEdu.exists()) {
-//            fileEdu.mkdirs();
-//        }
-
-//        List<String> subjectPaths = new ArrayList<>();
-//        String[] subjects = getResources().getStringArray(R.array.subject);
-//        for (String subject : subjects) {
-//            subjectPaths.add(myResourcePath + File.separator + subject);
-//        }
-
-//        for (String subject : subjectPaths) {
-//            File file = new File(subject);
-//            if (!file.exists()) {
-//                file.mkdirs();
-//            }
-//        }
         loadListView();
     }
 
@@ -229,9 +176,6 @@ public class ResourceLibraryActivity extends AppCompatActivity {
         for (String file : mDevicePaths) {
             File f = new File(file);
             String name;
-//            if (myResourcePath.equals(file)) {
-//                name = getStringName(R.string.my_resource);
-//            } else
             if ("/storage/sdcard".equals(file) || "/storage/emulated/0".equals(file)) {
                 name = getStringName(R.string.source_storage);
             } else if ("/storage/sdcard1".equals(file) || "/mnt/sdcard".equals(file)) {
@@ -289,7 +233,6 @@ public class ResourceLibraryActivity extends AppCompatActivity {
         resourceViewPager.setAdapter(viewPagerAdapter);
         mHorizontalTabLayout.setViewPager(resourceViewPager.getViewPager());
 
-        //ps:该位置值只要不为0，其他都可以
         //TODO:修改为0
         checkDeviceType(0);
     }
@@ -436,11 +379,6 @@ public class ResourceLibraryActivity extends AppCompatActivity {
                     fileMode = FileMode.MEDIA;
                     String mediaPath = resourceHistory.getCurrentMediaPath();
                     reLoadListData(mediaPath);
-//                    if (!TextUtils.isEmpty(mediaPath) && mediaPath.indexOf(currentDevicePath) != -1) {
-//
-//                    } else {
-//                        viewPagerAdapter.refreshPagerData(mMediaFiles, fileMode);
-//                    }
                 }
             }
 
@@ -453,15 +391,15 @@ public class ResourceLibraryActivity extends AppCompatActivity {
             public void onClick(View v) {
                 if (resource_type == 2) {
                     LocalBroadcastManager.getInstance(ResourceLibraryActivity.this).sendBroadcast(
-                            new Intent(ResourceLibraryActivity.RESOURCE_FILE_PATH_ACTION)
-                                    .putExtra(ResourceLibraryActivity.RESOURCE_FOLDER_PATH_KEY, currentPaths));
+                            new Intent(StatusConfig.RESOURCE_FILE_PATH_ACTION)
+                                    .putExtra(StatusConfig.RESOURCE_FOLDER_PATH_KEY, currentPaths));
                     finish();
                 } else if (resource_type == 9) {
                     Map<Integer, List<String>> picturePath = viewPagerAdapter.pictureAdapter.getPicturePath();
                     if (picturePath.size() == 5) {
                         FileDataManager.getInstance().setPicturePaths(picturePath);
                         LocalBroadcastManager.getInstance(ResourceLibraryActivity.this).sendBroadcast(
-                                new Intent(ResourceLibraryActivity.RESOURCE_PICTURE_FOLDER_ACTION)
+                                new Intent(StatusConfig.RESOURCE_PICTURE_FOLDER_ACTION)
                         );
                         finish();
                     } else {
@@ -524,9 +462,7 @@ public class ResourceLibraryActivity extends AppCompatActivity {
                 @Override
                 public void run() {
                     for (String file : mDevicePaths) {
-//                        if (!file.equals(myResourcePath)) {
                         listAllFiles(file);
-//                        }
                     }
                     if (index < 2000) {
                         Message message = new Message();
@@ -634,7 +570,6 @@ public class ResourceLibraryActivity extends AppCompatActivity {
             }
         }
         if (viewPagerAdapter != null) {
-//            viewPagerAdapter.setInitLists(mImageFolder, mMediaFiles);
             if (fileMode == FileMode.PICTURE) {
                 viewPagerAdapter.refreshPagerData(mImageFolder, fileMode);
             } else if (fileMode == FileMode.MEDIA) {
@@ -669,7 +604,6 @@ public class ResourceLibraryActivity extends AppCompatActivity {
                 if (isSearch) {
                     if (currentValue == 100) {
                         searchRadioBtn.setCompoundDrawables(null, null, null, null);
-//                        searchRadioBtn.setBackgroundColor(getResources().getColor(R.color.transparent));
                         searchRadioBtn.setBackground(getResources().getDrawable(R.mipmap.ic_resource_close));
                         searchRadioBtn.setText("");
                         searchEditText.setFocusable(true);
@@ -712,7 +646,7 @@ public class ResourceLibraryActivity extends AppCompatActivity {
      * resource_type = 1 文件目录分类
      * resource_type = 2 图片单选分类
      * resource_type = 3 音视频分类
-     * reource_type = 4,5,6,7,8 pdf,excel,word,ppt,打开jboard
+     * reource_type = 4,5,6,7, 8 pdf,excel,word,ppt,wps
      * resource_type=9 图片多选分类
      *
      * @param position
@@ -720,19 +654,11 @@ public class ResourceLibraryActivity extends AppCompatActivity {
     public void checkDeviceType(int position) {
         switch (resource_type) {
             case 0:
-//                if (position == 0) {//我的资源
-//                    resourceViewPager.setOnTouchPager(true);
-//                    mHorizontalTabLayout.setCurrentTab(resource_type);
-//                    mHorizontalTabLayout.getTitleView(0).setVisibility(View.VISIBLE);
-//                    mHorizontalTabLayout.getTitleView(1).setVisibility(View.GONE);
-//                    mHorizontalTabLayout.getTitleView(2).setVisibility(View.GONE);
-//                } else {//点击的其他设备
                 resourceViewPager.setOnTouchPager(false);
                 mHorizontalTabLayout.setCurrentTab(resource_type);
                 mHorizontalTabLayout.getTitleView(0).setVisibility(View.VISIBLE);
                 mHorizontalTabLayout.getTitleView(1).setVisibility(View.VISIBLE);
                 mHorizontalTabLayout.getTitleView(2).setVisibility(View.VISIBLE);
-//                }
                 break;
             case 1:
                 selectPathImageBtn.setVisibility(View.VISIBLE);
@@ -805,9 +731,6 @@ public class ResourceLibraryActivity extends AppCompatActivity {
                                 initFilePaths();
                                 reLoadListData(currentPaths);
                             }
-//                            reLoadListData(mDevicePaths.getThumbnailCache(1));
-//                            FileDataManager.getInstance().clean();
-//                            initFilePaths();
                         }
                     }, 500);
                 }
@@ -817,13 +740,6 @@ public class ResourceLibraryActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-//        if (currentPaths.equals(currentDevicePath)) {
-//            finish();
-//        } else {
-//            if (fileMode == FileMode.PICTURE || fileMode == FileMode.MEDIA) {
-//                //退出
-//                finish();
-//            }else
         if (fileMode == FileMode.PICTURE_FILE) {
             fileMode = FileMode.PICTURE;
             reLoadListData(currentDevicePath);
@@ -837,7 +753,6 @@ public class ResourceLibraryActivity extends AppCompatActivity {
                 reLoadListData(currentPaths);
             }
         }
-//        }
     }
 
     @Override
@@ -860,11 +775,5 @@ public class ResourceLibraryActivity extends AppCompatActivity {
             mExecutorService.shutdown();
             mExecutorService.shutdownNow();
         }
-        /**
-         * 销毁时发送应用内广播
-         */
-        Intent intent = new Intent("RESOURCE_DESTORY");
-        intent.putExtra("resource_finish", "finish");
-        LocalBroadcastManager.getInstance(this).sendBroadcast(intent);
     }
 }

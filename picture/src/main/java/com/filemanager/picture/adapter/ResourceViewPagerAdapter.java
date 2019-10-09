@@ -17,6 +17,8 @@ import androidx.viewpager.widget.PagerAdapter;
 
 import com.filemanager.picture.R;
 import com.filemanager.picture.activity.ResourceLibraryActivity;
+import com.filemanager.picture.bean.FileRelay;
+import com.filemanager.picture.config.StatusConfig;
 import com.filemanager.picture.file.FileUtils;
 import com.filemanager.picture.interfaces.OnItemClickListener;
 import com.filemanager.picture.model.FileMode;
@@ -77,14 +79,9 @@ public class ResourceViewPagerAdapter extends PagerAdapter {
             } else {
                 if (typeResource > 1) {
                     //获取文件路径
-                    LocalBroadcastManager.getInstance(mContext).sendBroadcast(
-                            new Intent(ResourceLibraryActivity.RESOURCE_FILE_PATH_ACTION)
-                                    .putExtra(ResourceLibraryActivity.RESOURCE_FILE_PATH_KEY, path));
+                    FileRelay.setFilePath(path);
                 } else if (typeResource == 0) {
-                    //插入白板
-                    LocalBroadcastManager.getInstance(mContext).sendBroadcast(
-                            new Intent(ResourceLibraryActivity.RESOURCE_INSERT_FILE_ACTION)
-                                    .putExtra(ResourceLibraryActivity.RESOURCE_INSERT_FILE_KEY, path));
+                    FileRelay.setFilePath(path);
                 }
                 mListener.onResourceFinish();
             }
@@ -121,14 +118,6 @@ public class ResourceViewPagerAdapter extends PagerAdapter {
 
         void onPagerItemClick(String path, FileMode fileMode, boolean isFileNull);
     }
-
-//    public void setInitLists(List<File> pictures, List<File> medias) {
-//        mPictures.clear();
-//        mMedias.clear();
-//
-//        this.mPictures.addAll(pictures);
-//        this.mMedias.addAll(medias);
-//    }
 
     public void refreshPagerData(FileMode fileMode) {
         if (fileMode == FileMode.FILE && fileAdapter != null) {

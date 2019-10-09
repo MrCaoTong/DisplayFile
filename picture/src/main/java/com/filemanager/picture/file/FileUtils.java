@@ -6,7 +6,7 @@ import android.text.TextUtils;
 import android.webkit.MimeTypeMap;
 
 
-import com.filemanager.picture.config.EduBoardConfig;
+import com.filemanager.picture.config.StatusConfig;
 import com.filemanager.picture.model.FileMode;
 
 import java.io.File;
@@ -25,6 +25,12 @@ public class FileUtils {
 
     private static String[] postFixs;
 
+    /**
+     * 通过反射得到所有设备路径
+     *
+     * @param context
+     * @return
+     */
     public static List<String> getVolumePaths(Context context) {
         StorageManager manager = (StorageManager) context.getSystemService(Context.STORAGE_SERVICE);
         List<String> mPaths = new ArrayList<>();
@@ -41,6 +47,12 @@ public class FileUtils {
         return null;
     }
 
+    /**
+     * 屏蔽不合格路径
+     *
+     * @param file
+     * @return
+     */
     public static boolean isQualified(File file) {
         if (file == null)
             return false;
@@ -102,14 +114,21 @@ public class FileUtils {
         if (file.exists()) {
             String folderPath = file.getAbsolutePath().toLowerCase();
             String extension = folderPath.substring(folderPath.lastIndexOf("."));
-            return extension.equals(EduBoardConfig.COURSE_WARE_FILE_SUFFIX);
+            return extension.equals(StatusConfig.COURSE_WARE_FILE_SUFFIX);
         }
         return false;
     }
 
+    /**
+     * 根据type显示文件后缀类型
+     *
+     * @param file
+     * @param type
+     * @return
+     */
     public static boolean checkStringPostFix(File file, int type) {
         if (type == 0 || type == 2 || type == 3) {
-            postFixs = new String[]{".png", ".jpg", ".bmp", ".mp4", ".WMV", ".rmvb", ".AVI", ".MOV", ".mp3", ".pdf", ".doc", ".docx", ".xlsx", ".xls", ".pptx", ".ppt", EduBoardConfig.COURSE_WARE_FILE_SUFFIX};
+            postFixs = new String[]{".png", ".jpg", ".bmp", ".mp4", ".WMV", ".rmvb", ".AVI", ".MOV", ".mp3", ".pdf", ".doc", ".docx", ".xlsx", ".xls", ".pptx", ".ppt", StatusConfig.COURSE_WARE_FILE_SUFFIX};
         } else if (type == 1) {
             return false;
         } else if (type == 4) {
@@ -121,7 +140,7 @@ public class FileUtils {
         } else if (type == 7) {
             postFixs = new String[]{".pptx", ".ppt"};
         } else if (type == 8) {
-            postFixs = new String[]{".pdf",".xlsx", ".xls",".doc", ".docx",".pptx", ".ppt"};
+            postFixs = new String[]{".pdf", ".xlsx", ".xls", ".doc", ".docx", ".pptx", ".ppt"};
         } else if (type == 9) {
             postFixs = new String[]{".png", ".jpg"};
         }
@@ -141,6 +160,12 @@ public class FileUtils {
         return false;
     }
 
+    /**
+     * 得到后缀
+     *
+     * @param file
+     * @return
+     */
     public static String getMimeType(File file) {
         MimeTypeMap map = MimeTypeMap.getSingleton();
         String pathName = file.getAbsolutePath().toLowerCase(Locale.getDefault());//将字符串转换成小写          获取系统默认语言
@@ -158,6 +183,16 @@ public class FileUtils {
         }
     }
 
+    /**
+     * 得到所有文件路径
+     *
+     * @param fileMode
+     * @param type
+     * @param path
+     * @param getModeCallBack
+     * @param listener
+     * @return
+     */
     public static ArrayList<File> getFilesList(final FileMode fileMode, final int type, String path, GetModeCallBack getModeCallBack, OnFileFound listener) {
         final File file = new File(path);
         ArrayList<File> files = new ArrayList<>();
@@ -165,7 +200,6 @@ public class FileUtils {
             File[] fileSort = file.listFiles(new FileFilter() {
                 @Override
                 public boolean accept(File pathname) {
-//                    Log.i("test:", pathname + " " + fileMode);
                     if (fileMode == FileMode.FILE) {
                         if (pathname.isFile()) {
                             return checkStringPostFix(pathname, type);
@@ -206,20 +240,13 @@ public class FileUtils {
         return files;
     }
 
+    /**
+     * 字体转换为全角符
+     *
+     * @param name
+     * @return
+     */
     public static String conversionToDBC(String name) {
-//        char[] chars = name.toCharArray();
-//        for (int i = 0; i < chars.length; i++) {
-//            if (chars[i] == 12288) {
-//                chars[i] = (char) 32;
-//                continue;
-//            }
-//            if (chars[i] > 65280 && chars[i] < 65375) {
-//                chars[i] = (char) (chars[i] - 65248);
-//            }
-//            return new String(chars);
-//        }
-//        return "";
-
         char[] c = name.toCharArray();
         for (int i = 0; i < c.length; i++) {
             if (c[i] == 32) //半角空格

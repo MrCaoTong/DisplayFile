@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.filemanager.picture.GlideApp;
 import com.filemanager.picture.R;
-import com.filemanager.picture.config.EduBoardConfig;
+import com.filemanager.picture.config.StatusConfig;
 import com.filemanager.picture.file.FileUtils;
 import com.filemanager.picture.interfaces.OnItemClickListener;
 import com.filemanager.picture.model.FileMode;
@@ -87,7 +87,7 @@ public class FileAdapter extends RecyclerView.Adapter<ViewHolder> {
                 holder.resource_adapter_imageView.setVisibility(View.VISIBLE);
                 holder.resource_icon_imageView.setVisibility(View.GONE);
                 holder.resource_adapter_imageView.setImageResource(R.mipmap.ic_resource_ppt);
-            } else if (postFix.equals(EduBoardConfig.COURSE_WARE_FILE_SUFFIX)) {
+            } else if (postFix.equals(StatusConfig.COURSE_WARE_FILE_SUFFIX)) {
                 holder.resource_adapter_imageView.setVisibility(View.VISIBLE);
                 holder.resource_icon_imageView.setVisibility(View.GONE);
                 holder.resource_adapter_imageView.setImageResource(R.mipmap.ic_browser_icon);
