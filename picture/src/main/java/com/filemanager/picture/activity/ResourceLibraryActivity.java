@@ -60,7 +60,6 @@ import static com.filemanager.picture.file.FileUtils.isQualified;
 
 /**
  * 资源库
- * TODO:去掉了我的资源，在设备列表中只显示本地存储
  */
 public class ResourceLibraryActivity extends AppCompatActivity {
 

@@ -2,6 +2,6 @@
 <resources>
 
     <dimen name="source_library_width">364dp</dimen>
-    <dimen name="source_library_height">463dp</dimen>
+    <dimen name="source_library_height">320dp</dimen>
     <dimen name="source_devices_width">150dp</dimen>
 </resources>

@@ -8,14 +8,14 @@
     android:orientation="vertical">
 
     <LinearLayout
-        android:layout_width="430dp"
-        android:layout_height="540dp"
+        android:layout_width="380dp"
+        android:layout_height="400dp"
         android:gravity="center_horizontal"
         android:orientation="vertical">
 
         <com.tmall.ultraviewpager.UltraHorizontalTabLayout
             android:id="@+id/resource_top_layout"
-            android:layout_width="290dp"
+            android:layout_width="260dp"
             android:layout_height="33dp"
             android:background="@mipmap/resource_title_bg"
             android:paddingLeft="5dp"
@@ -34,18 +34,18 @@
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/resource_list_recycler"
-                android:layout_width="33dp"
+                android:layout_width="25dp"
                 android:layout_height="@dimen/source_library_height"
                 android:layout_marginLeft="30dp" />
 
             <View
                 android:layout_width="0.5dp"
-                android:layout_height="450dp"
+                android:layout_height="325dp"
                 android:layout_marginTop="5dp"
                 android:background="@color/resource_line" />
 
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="290dp"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
@@ -69,7 +69,7 @@
                             android:src="@mipmap/ic_resource_back" />
 
                         <HorizontalScrollView
-                            android:layout_width="240dp"
+                            android:layout_width="220dp"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="5dp"
                             android:paddingRight="3dp"
@@ -77,7 +77,7 @@
 
                             <TextView
                                 android:id="@+id/resource_path_text"
-                                android:layout_width="240dp"
+                                android:layout_width="220dp"
                                 android:layout_height="wrap_content"
                                 android:gravity="center_vertical"
                                 android:textColor="@color/resource_path"
@@ -87,7 +87,7 @@
                     </LinearLayout>
 
                     <RelativeLayout
-                        android:layout_width="330dp"
+                        android:layout_width="310dp"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
                         android:paddingRight="15dp">
@@ -122,7 +122,7 @@
                             android:paddingLeft="3dp"
                             android:paddingRight="3dp"
                             android:text="@string/search"
-                            android:textColor="@color/resource_search"
+                            android:textColor="@android:color/black"
                             android:textSize="8sp" />
                     </RelativeLayout>
                 </FrameLayout>
@@ -135,13 +135,13 @@
 
                     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
                         android:id="@+id/resource_swipe_refresh"
-                        android:layout_width="320dp"
-                        android:layout_height="430dp">
+                        android:layout_width="280dp"
+                        android:layout_height="300dp">
 
                         <com.tmall.ultraviewpager.UltraViewPager
                             android:id="@+id/resource_viewpager"
-                            android:layout_width="320dp"
-                            android:layout_height="430dp" />
+                            android:layout_width="280dp"
+                            android:layout_height="300dp" />
                     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
                     <TextView

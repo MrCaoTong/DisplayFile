@@ -85,9 +85,7 @@ public class PictureAdapter extends RecyclerView.Adapter<ViewHolder> {
         holder.resource_adapter_layout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (type == 2) {
-                    mListener.onItemClick(fileMode, file.getPath());
-                } else if (type == 9) {
+                if (type == 9) {
                     if (mPaths.size() > 8) {
                         Toast.makeText(mContext, "一个文件夹下面最多支持导入8张图片", Toast.LENGTH_SHORT).show();
                     } else {
@@ -105,6 +103,8 @@ public class PictureAdapter extends RecyclerView.Adapter<ViewHolder> {
                             holder.resource_check_imageView.setVisibility(View.GONE);
                         }
                     }
+                } else {
+                    mListener.onItemClick(fileMode, file.getPath());
                 }
             }
         });

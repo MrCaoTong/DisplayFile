@@ -85,20 +85,17 @@ public class ResourceDeviceAdapter extends RecyclerView.Adapter<ResourceDeviceAd
     }
 
     public void setSelectText(int position) {
-        //TODO : 只显示内部设备后，注释掉不显示状态代码
-//        for (int i = 0; i < mNames.size(); i++) {
-//            mTextViews.get(i).setTextColor(mContext.getResources().getColor(R.color.resource_device));
-//            mTextViews.get(i).setTextSize(13);
-//        }
+        for (int i = 0; i < mNames.size(); i++) {
+            mTextViews.get(i).setTextColor(mContext.getResources().getColor(R.color.resource_device));
+            mTextViews.get(i).setTextSize(13);
+        }
         mTextViews.get(position).setTextColor(mContext.getResources().getColor(R.color.subject_indicator));
         mTextViews.get(position).setTextSize(15);
     }
 
     @Override
     public int getItemCount() {
-        //TODO : 只显示1个
-//        return mNames.size();
-        return 1;
+        return mNames.size();
     }
 
     class ViewHolder extends RecyclerView.ViewHolder {
