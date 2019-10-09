@@ -20,6 +20,6 @@ type有：
 * video 只显示音视频
 * wps  显示pdf,excel,word,ppt类型的文件
 
-如需增加类型，可自行扩展
+如需增加类型，可自行扩展</br>
 ![image](https://github.com/MrCaoTong/DisplayFile/blob/master/img/wps.png)
 
