@@ -18,7 +18,7 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.test).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                FileRelay.startActivtiy(MainActivity.this, "wps", new OnFilePathListener() {
+                FileRelay.startActivtiy(MainActivity.this, "directory", new OnFilePathListener() {
                     @Override
                     public void onFilePath(String path) {
                         Toast.makeText(MainActivity.this,path,Toast.LENGTH_SHORT).show();

@@ -38,6 +38,7 @@ import androidx.viewpager.widget.ViewPager;
 import com.filemanager.picture.R;
 import com.filemanager.picture.adapter.ResourceDeviceAdapter;
 import com.filemanager.picture.adapter.ResourceViewPagerAdapter;
+import com.filemanager.picture.bean.FileRelay;
 import com.filemanager.picture.config.StatusConfig;
 import com.filemanager.picture.file.FileDataManager;
 import com.filemanager.picture.file.FileUtils;
@@ -389,18 +390,19 @@ public class ResourceLibraryActivity extends AppCompatActivity {
         selectPathImageBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (resource_type == 2) {
-                    LocalBroadcastManager.getInstance(ResourceLibraryActivity.this).sendBroadcast(
-                            new Intent(StatusConfig.RESOURCE_FILE_PATH_ACTION)
-                                    .putExtra(StatusConfig.RESOURCE_FOLDER_PATH_KEY, currentPaths));
+                if (resource_type == 1) {
+//                    LocalBroadcastManager.getInstance(ResourceLibraryActivity.this).sendBroadcast(
+//                            new Intent(StatusConfig.RESOURCE_FILE_PATH_ACTION)
+//                                    .putExtra(StatusConfig.RESOURCE_FOLDER_PATH_KEY, currentPaths));
+                    FileRelay.setFilePath(currentPaths);
                     finish();
                 } else if (resource_type == 9) {
                     Map<Integer, List<String>> picturePath = viewPagerAdapter.pictureAdapter.getPicturePath();
                     if (picturePath.size() == 5) {
-                        FileDataManager.getInstance().setPicturePaths(picturePath);
-                        LocalBroadcastManager.getInstance(ResourceLibraryActivity.this).sendBroadcast(
-                                new Intent(StatusConfig.RESOURCE_PICTURE_FOLDER_ACTION)
-                        );
+//                        FileDataManager.getInstance().setPicturePaths(picturePath);
+//                        LocalBroadcastManager.getInstance(ResourceLibraryActivity.this).sendBroadcast(
+//                                new Intent(StatusConfig.RESOURCE_PICTURE_FOLDER_ACTION)
+//                        );
                         finish();
                     } else {
                         Toast.makeText(ResourceLibraryActivity.this, "请选择5个图片文件夹！", Toast.LENGTH_SHORT).show();
